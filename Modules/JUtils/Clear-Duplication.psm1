@@ -44,22 +44,22 @@ function Clear-Duplication()
 
             Add-Type -AssemblyName Microsoft.VisualBasic
 
-            Write-Host $HashKVP .Key
-            $Files = $HashKVP. Value
-            foreach($path in $Files)
+            Write-Host $HashKVP.Key
+            $Files = $HashKVP.Value
+            foreach($file in $Files)
             {
-                Write-Host $path
+                Write-Host $file
             }
    
             # Remove Duplicate files
-            foreach($path in $Files[1..$Files.Length])
+            foreach($file in $Files[1..$Files.Length])
             {
-                Write-Host "Remove $path..." -ForegroundColor Cyan
+                Write-Host "Remove $file..." -ForegroundColor Cyan
                 [Microsoft.VisualBasic.FileIO.FileSystem]::DeleteFile(
-                    $path,
+                    $file,
                     'OnlyErrorDialogs',
                     'SendToRecycleBin')
-                Write-Host "Remove $path done." -ForegroundColor Cyan
+                Write-Host "Remove $file done." -ForegroundColor Cyan
             }
         }
 
